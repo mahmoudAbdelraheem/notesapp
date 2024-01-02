@@ -5,14 +5,16 @@ include ("../connect.php");
 $title = filterRequest("title");
 $content = filterRequest("content");
 $user_id = filterRequest("user_id");
-//$image_name =  uplodImage('file');
+$image_name =  uplodImage('file');
 
-//if($image_name !='faild'){
+
+
+if($image_name !='faild'){
 $stmt = $con->prepare("
-INSERT INTO `notes`(`note_title`, `note_content`, `note_user`)
- VALUES (?,?,?)");
+INSERT INTO `notes`(`note_title`, `note_content`, `note_user`,`note_image`)
+ VALUES (?,?,?,?)");
 
-$stmt->execute(array($title , $content , "$user_id" ));
+$stmt->execute(array($title , $content , "$user_id",$image_name ));
 $count = $stmt->rowCount();
 
 if($count > 0 ){
@@ -21,8 +23,7 @@ if($count > 0 ){
     echo json_encode(array("status"=> "falid"));
 }
 
-//}
-
+}
 
 
 

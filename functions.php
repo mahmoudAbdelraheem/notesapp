@@ -15,7 +15,7 @@ function uplodImage($imageRequert){
     $imageTmp  = $_FILES[$imageRequert]['tmp_name'];
     $imageSize = $_FILES[$imageRequert]['size'];
 
-    $allowExt   = array("png","jpg","gif","jpeg");
+    $allowExt   = array("png","jpg","gif","jpeg", "heic");
     $imageArray = explode(".", $imageName);
  
    $ext = end($imageArray);
