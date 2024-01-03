@@ -9,7 +9,7 @@ function filterRequest ($request){
 
 // for uploding images
 
-function uplodImage($imageRequert){
+function uploadImage($imageRequert){
     global $msgError;
     $imageName =  rand(100,10000) . $_FILES[$imageRequert]['name'];
     $imageTmp  = $_FILES[$imageRequert]['tmp_name'];
@@ -37,7 +37,7 @@ function uplodImage($imageRequert){
 
 //for delete an image from server
 function deleteImage($dir , $imageName){
-    if(file_exists($dir . '/' . $imageName )){
+    if(file_exists($dir . '/' . $imageName ) && $imageName  != "note.png"){
         unlink($dir . '/' . $imageName );
         return 'success';
     }else {
